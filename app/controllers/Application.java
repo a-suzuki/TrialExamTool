@@ -1,14 +1,17 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+import java.util.List;
 
-import views.html.*;
+import models.User;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.index;
 
 public class Application extends Controller {
 
     public static Result index() {
-        return ok(index.render("Your new application is ready."));
+    	List<User> user = User.find.all();
+        return ok(index.render("ユーザー一覧", user));
     }
 
 }
